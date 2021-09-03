@@ -1,28 +1,6 @@
 from tkinter import *
 from tkinter import ttk
 
-global customer_tab_1
-customer_tab_1 = {}
-customer_tab_2 = {}
-customer_tab_3 = {}
-customer_tab_4 = {}
-customer_tab_5 = {}
-customer_tab_6 = {}
-customer_tab_7 = {}
-customer_tab_8 = {}
-customer_tab_9 = {}
-
-total_1 = []
-total_2 = []
-total_3 = []
-total_4 = []
-total_5 = []
-total_6 = []
-total_7 = []
-total_8 = []
-total_9 = []
-
-global lstbox1
 
 class Invoice:
     invoicelst = []
