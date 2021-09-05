@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 
 
 class Invoice:
@@ -57,6 +58,14 @@ class Invoice:
         #taxPrice = newprice * 1.15
         #tipCost = newprice * 0.07
         #totalPrice = taxPrice + tipCost
+
+    def listMessageBox(self):
+        window=Tk()
+        listbox=Listbox(window)
+        listbox.pack(fill=BOTH,expand=1)
+        [listbox.insert(END,row) for row in self.invoice]
+        window.mainloo()
+
         
 
 
@@ -68,44 +77,6 @@ b1Cust = Invoice()
 #b1Cust.drinks('Whiskey')
 #b1Cust.drinks('Beer')
 
-
-
-
-def drinksTab(btn,num):
-    if btn == 16:
-        if num == 1:
-            customer_tab_1.update({'Soda Water': float(2.00)})                  
-        elif num == 2:
-            customer_tab_2.update({'Soda Water': 2.00})
-        elif num == 3:
-            customer_tab_3.update({'Soda Water': 2.00})
-        elif num == 4:
-            customer_tab_4.update({'Soda Water': 2.00})
-        elif num == 5:
-            customer_tab_5.update({'Soda Water': 2.00})
-        elif num == 6:
-            customer_tab_6.update({'Soda Water': 2.00})
-        elif num == 7:
-            customer_tab_7.update({'Soda Water': 2.00})
-        elif num == 8:
-            customer_tab_9.update({'Soda Water': 2.00})
-    if btn == 17:
-        if num == 1:
-            customer_tab_1.update({'Mineral Water': float(2.50)})                  
-        elif num == 2:
-            customer_tab_2.update({'Soda Water': 2.00})
-        elif num == 3:
-            customer_tab_3.update({'Soda Water': 2.00})
-        elif num == 4:
-            customer_tab_4.update({'Soda Water': 2.00})
-        elif num == 5:
-            customer_tab_5.update({'Soda Water': 2.00})
-        elif num == 6:
-            customer_tab_6.update({'Soda Water': 2.00})
-        elif num == 7:
-            customer_tab_7.update({'Soda Water': 2.00})
-        elif num == 8:
-            customer_tab_9.update({'Soda Water': 2.00})
 
 
 def menuOptions(num):
@@ -142,20 +113,12 @@ def menuOptions(num):
     drinks_btn4 = Button(menuWindow, text='Scotch $5.00',width=25,command=lambda: b1Cust.drinks('Scotch')).grid(row=5,column=3, padx=8, pady=8)
     drinks_btn5 = Button(menuWindow, text='Whiskey $5.00',width=25,command=lambda:b1Cust.drinks('Whiskey')).grid(row=6,column=3, padx=8, pady=8)
     drinks_btn6 = Button(menuWindow, text='Beer $5.00',width=25,command=lambda:b1Cust.drinks('Beer')).grid(row=7,column=3, padx=8, pady=8)
-    cust_inv_btn1 = Button(menuWindow, text='INVOICE',width=25,command=lambda: print(b1Cust.invoice)).grid(row=12,column=1, padx=8, pady=8)
-    total_btn1 = Button(menuWindow, text='TOTAL',width=25,command=lambda:print(b1Cust.Total)).grid(row=12,column=2, padx=8, pady=8)
+    cust_inv_btn1 = Button(menuWindow, text='INVOICE',width=25,command=b1Cust.listMessageBox)).grid(row=12,column=1, padx=8, pady=8)
+    total_btn1 = Button(menuWindow, text='TOTAL',width=25,command=b1Cust.listMessageBox).grid(row=12,column=2, padx=8, pady=8)
 
     customer_tab_1 = []
        
-def customer_invoice_1():
-    
-    for amount in customer_tab_1.values():
-        amount += amount
-        
-    customer_tab_1.update({'Total is': round(amount,2)})
-    for item, price in customer_tab_1.items():
-        print(item,'--- $',round(price,2))
-    customer_tab_1.clear()
+
 
   
 def mainWindow():
