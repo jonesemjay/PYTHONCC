@@ -8,11 +8,10 @@ class Invoice:
     invoicelst = []
     def __init__(self):
         self.invoice = []
-        self.oldtotal = self.invoice[:]
-        self.total = []
-    
-    def ClearInv(self):
-        self.invoice = [:]
+        self.subtotal = []
+        
+    #def ClearInv(self):
+       
     
     def Drinks(self,drink):
         self.drink = drink
@@ -25,6 +24,7 @@ class Invoice:
                                         ]
         if drink == 'Soda Water':
             self.invoice.insert(0,drinkslst[0])
+            #self.subtotal.append(Decimal('drinkslst[0][1]'))
         if drink == 'Mineral Water':
             self.invoice.insert(0,drinkslst[1])
         if drink == 'Fresh Juice':
@@ -93,14 +93,14 @@ class Invoice:
         if side == 'Grilled Salmon':
             self.invoice.insert(0,sideslst[7])
     
-    def Total(self):
-        #total = self.invoice[:]
-        for i in self.oldtotal:
-            print(i)
-            for price in i:
-                if type(price) == float:
-                    self.total.insert(0,price)
-        print(self.total)
+    def Totalinv(self):
+        self.invoice = self.invoice[:]
+        for i in self.invoice:
+            self.subtotal.append(i[1])
+            #for price in i:
+               # if type(price) == float:
+                    #self.invoice.insert(0,'total',price)
+        print(self.subtotal)
         
         #for newprice in self.total:
         #    newprice += newprice
@@ -187,11 +187,11 @@ def menuOptions(num):
 
 
     cust_inv_btn = Button(menuWindow, text='INVOICE',width=25,command=b1Cust.listMessageBox)
-    total_btn = Button(menuWindow, text='TOTAL',width=25,command=b1Cust.total)
-    clear_inv_btn = Button(menuWindow, text='RESET',width=25,command=lambda:b1Cust.ClearInv)
+    total_btn = Button(menuWindow, text='TOTAL',width=25,command=lambda: b1Cust.Totalinv)
+    #clear_inv_btn = Button(menuWindow, text='RESET',width=25,command=lambda:b1Cust.ClearInv)
     cust_inv_btn.grid(row=14,column=1, padx=8, pady=8)
     total_btn.grid(row=14,column=2, padx=8, pady=8)
-    clear_inv_btn.grid(row=14,column=3, padx=8, pady=8)
+    #clear_inv_btn.grid(row=14,column=3, padx=8, pady=8)
  
 
   
